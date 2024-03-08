@@ -1,7 +1,10 @@
 import "./App.css";
 
 const ProductList = ({ products }) => {
-  const productListing = products.map((product) => (
+  const filteredProducts = products.filter(
+    (product) => product.price >= 20 && product.price <= 50,
+  );
+  const productListing = filteredProducts.map((product) => (
     <div key={product.id}>
       <h3>Name: {product.name}</h3>
       <p>Price: {product.price}</p>
@@ -17,7 +20,11 @@ const ProductList = ({ products }) => {
 };
 
 const RestaurantsList = ({ restaurants }) => {
-  const restaurantListing = restaurants.map((restaurant) => (
+  const filteredRestaurants = restaurants.filter(
+    (restaurant) => restaurant.cuisine === "Italian",
+  );
+
+  const restaurantListing = filteredRestaurants.map((restaurant) => (
     <div key={restaurant.id}>
       <h3>Name: {restaurant.name}</h3>
       <p>Cuisine: {restaurant.cuisine}</p>
@@ -32,7 +39,8 @@ const RestaurantsList = ({ restaurants }) => {
 };
 
 const Videos = ({ videos }) => {
-  const videoListing = videos.map((video) => (
+  const filteredVideos = videos.filter((video) => video.views > 1000);
+  const videoListing = filteredVideos.map((video) => (
     <div key={video.id}>
       <h3>Title: {video.title}</h3>
       <p>Views: {video.views}</p>
@@ -49,8 +57,8 @@ const Videos = ({ videos }) => {
 export default function App() {
   const products = [
     { id: 1, name: "Product 1", price: 10.99 },
-    { id: 2, name: "Product 2", price: 19.99 },
-    { id: 3, name: "Product 3", price: 14.49 },
+    { id: 2, name: "Product 2", price: 29.99 },
+    { id: 3, name: "Product 3", price: 34.49 },
   ];
 
   const restaurants = [
@@ -61,7 +69,7 @@ export default function App() {
 
   const videos = [
     { id: 1, title: "Video 1", views: 1000 },
-    { id: 2, title: "Video 2", views: 500 },
+    { id: 2, title: "Video 2", views: 5000 },
     { id: 3, title: "Video 3", views: 2000 },
   ];
 
